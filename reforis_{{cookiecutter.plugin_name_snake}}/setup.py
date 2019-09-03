@@ -22,6 +22,9 @@ setuptools.setup(
         'wtforms==2.2.1',
         'Flask-WTF==0.14.2',
         'Bootstrap-Flask==1.0.8',
+        'pytest==3.7.1',
+        'pylint==2.3.1',
+        'pycodestyle==2.5.0',
     ],
     extras_require={
         'devel': [
