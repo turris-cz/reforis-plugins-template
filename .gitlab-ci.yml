@@ -1,0 +1,20 @@
+image: python:3.7-slim-stretch
+
+stages:
+  - test
+
+before_script:
+  - apt-get update && apt-get -y install sudo make curl && pip3 install cookiecutter
+  - cookiecutter --no-input .
+  - cd reforis_example_plugin
+  - make prepare-dev
+
+test:
+  stage: test
+  script:
+    - make test
+
+lint:
+  stage: test
+  script:
+    - make lint

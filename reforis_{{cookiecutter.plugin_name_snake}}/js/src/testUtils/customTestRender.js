@@ -5,24 +5,23 @@
  * See /LICENSE for more information.
  */
 
-import React from 'react';
+import React from "react";
 
-import {UIDReset} from 'react-uid';
-import {StaticRouter} from 'react-router';
-import {render} from '@testing-library/react'
+import { UIDReset } from "react-uid";
+import { render } from "@testing-library/react";
 
-function Wrapper({children}) {
-    return <StaticRouter>
+function Wrapper({ children }) {
+    return (
         <UIDReset>
             {children}
         </UIDReset>
-    </StaticRouter>
+    );
 }
 
-const customTestRender = (ui, options) => render(ui, {wrapper: Wrapper, ...options});
+const customTestRender = (ui, options) => render(ui, { wrapper: Wrapper, ...options });
 
 // re-export everything
-export * from '@testing-library/react'
+export * from "@testing-library/react";
 
 // override render method
-export {customTestRender as render}
+export { customTestRender as render };

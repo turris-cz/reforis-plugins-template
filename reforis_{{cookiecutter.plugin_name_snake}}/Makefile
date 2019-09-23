@@ -7,10 +7,14 @@
 
 DEV_PYTHON=python3.7
 ROUTER_PYTHON=python3.6
+VENV_NAME?=venv
+VENV_BIN=$(shell pwd)/$(VENV_NAME)/bin
 
 JS_DIR=./js
 
 all:
+	@echo "make prepare-dev"
+	@echo "    Create python virtual environment and install dependencies."
 	@echo "make lint"
 	@echo "    Run list on project."
 	@echo "make install"
@@ -28,14 +32,26 @@ all:
 	@echo "make clean"
 	@echo "    Remove python artifacts and virtualenv."
 
+venv: $(VENV_NAME)/bin/activate
+$(VENV_NAME)/bin/activate: setup.py
+	test -d $(VENV_NAME) || $(DEV_PYTHON) -m virtualenv -p $(DEV_PYTHON) $(VENV_NAME)
+	# Some problem in latest version of setuptools during extracting translations.
+	$(VENV_BIN)/$(DEV_PYTHON) -m pip install -U pip setuptools==39.1.0
+	$(VENV_BIN)/$(DEV_PYTHON) -m pip install -e .[devel]
+	touch $(VENV_NAME)/bin/activate
+
 prepare-dev:
 	which npm || curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 	which npm || sudo apt install -y nodejs
 	cd $(JS_DIR); npm install
 
+	which $(DEV_PYTHON) || sudo apt install -y $(DEV_PYTHON) $(DEV_PYTHON)-pip
+	which virtualenv || sudo $(DEV_PYTHON) -m pip install virtualenv
+	make venv
+
 install:
 	$(ROUTER_PYTHON) -m pip install -e .
-	ln -sf /tmp/reforis-diagnostics/reforis_static/{{cookiecutter.plugin_name_snake}} /tmp/reforis/reforis_static/
+	ln -sf /tmp/reforis_{{cookiecutter.plugin_name_snake}}/reforis_static/{{cookiecutter.plugin_name_snake}} /tmp/reforis/reforis_static/
 
 watch-js:
 	cd $(JS_DIR); npm run-script watch
@@ -46,8 +62,8 @@ lint: lint-js lint-web
 lint-js:
 	cd $(JS_DIR); npm run lint
 lint-web: venv
-	$(VENV_BIN)/$(DEV_PYTHON) -m pylint --rcfile=pylintrc reforis
-	$(VENV_BIN)/$(DEV_PYTHON) -m pycodestyle --config=pycodestyle reforis
+	$(VENV_BIN)/$(DEV_PYTHON) -m pylint --rcfile=pylintrc reforis_{{cookiecutter.plugin_name_snake}}
+	$(VENV_BIN)/$(DEV_PYTHON) -m pycodestyle --config=pycodestyle reforis_{{cookiecutter.plugin_name_snake}}
 
 test: test-js test-web
 test-js:
@@ -68,7 +84,7 @@ compile-messages:
 
 clean:
 	find . -name '*.pyc' -exec rm -f {} +
-	rm -rf $(VENV_NAME) *.eggs *.egg-info dist build docs/_build .cache
+	rm -rf $(VENV_NAME) *.eggs *.egg-info dist build .cache
 	rm -rf dist build *.egg-info
 	rm -rf $(JS_DIR)/node_modules/ reforis_static/{{cookiecutter.plugin_name_snake}}/app.min.js
 	$(ROUTER_PYTHON) -m pip uninstall -y reforis_{{cookiecutter.plugin_name_snake}}
