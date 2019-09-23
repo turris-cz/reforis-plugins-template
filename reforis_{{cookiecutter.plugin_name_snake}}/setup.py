@@ -14,7 +14,7 @@ setuptools.setup(
     include_package_data=True,
 
     description='{{cookiecutter.description}}',
-    author='Bogdan Bodnar',
+    author='CZ.NIC, z.s.p.o.',
 
     # All versions are fixed just for case. Once in while try to check for new versions.
     install_requires=[
@@ -23,8 +23,15 @@ setuptools.setup(
         'Flask-WTF==0.14.2',
         'Bootstrap-Flask==1.0.8',
     ],
+    extras_require={
+        'devel': [
+            'pytest==3.7.1',
+            'pylint==2.3.1',
+            'pycodestyle==2.5.0',
+        ],
+    },
     entry_points={
-        'foris.plugins': '{{cookiecutter.plugin_name_snake}} = reforis_diagnostics:{{cookiecutter.plugin_name_snake}}'
+        'foris.plugins': '{{cookiecutter.plugin_name_snake}} = reforis_{{cookiecutter.plugin_name_snake}}:{{cookiecutter.plugin_name_snake}}'
     },
     classifiers=[
         'Framework :: Flask',

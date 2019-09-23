@@ -5,8 +5,10 @@
 
 from flask import Blueprint, current_app, jsonify
 
+# pylint: disable=invalid-name
 blueprint = Blueprint('{{cookiecutter.plugin_name_camel}}', __name__, url_prefix='{{cookiecutter.plugin_url}}/api')
 
+# pylint: disable=invalid-name
 {{cookiecutter.plugin_name_snake}} = {
     'blueprint': blueprint,
     'js_app_path': '{{cookiecutter.plugin_name_snake}}/app.min.js'

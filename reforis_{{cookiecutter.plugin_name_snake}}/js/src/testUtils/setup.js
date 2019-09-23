@@ -13,8 +13,8 @@ global.afterEach(() => {
     mockAxios.reset();
 });
 
-jest.doMock('moment', () => {
-    moment.tz.setDefault('UTC');
+jest.doMock("moment", () => {
+    moment.tz.setDefault("UTC");
     return moment;
 });
 

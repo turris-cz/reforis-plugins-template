@@ -5,13 +5,13 @@
  * See /LICENSE for more information.
  */
 
-import {{cookiecutter.plugin_name_camel}} from './{{cookiecutter.plugin_name_snake}}/{{cookiecutter.plugin_name_camel}}';
+import {{cookiecutter.plugin_name_camel}} from "./{{cookiecutter.plugin_name_snake}}/{{cookiecutter.plugin_name_camel}}";
 
 const {{cookiecutter.plugin_name_camel}}Plugin = {
     name: _("{{cookiecutter.name|title}}"),
-    submenuId: 'administration',
+    submenuId: "administration",
     weight: 100,
-    path: '{{cookiecutter.plugin_url}}',
+    path: "{{cookiecutter.plugin_url}}",
     component: {{cookiecutter.plugin_name_camel}},
 };
 

@@ -8,7 +8,9 @@
 import React from "react";
 
 export default function {{cookiecutter.plugin_name_camel}}() {
-   return <>
-        <h1>{{cookiecutter.name|title}}</h1>
-    </>
+    return (
+        <>
+            <h1>{{cookiecutter.name|title}}</h1>
+        </>
+    );
 }
