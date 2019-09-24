@@ -18,3 +18,8 @@ lint:
   stage: test
   script:
     - make lint
+
+translate:
+  stage: test
+  script:
+    - make create-messages

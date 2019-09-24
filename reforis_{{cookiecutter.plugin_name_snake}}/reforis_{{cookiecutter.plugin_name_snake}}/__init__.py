@@ -6,7 +6,11 @@
 from flask import Blueprint, current_app, jsonify
 
 # pylint: disable=invalid-name
-blueprint = Blueprint('{{cookiecutter.plugin_name_camel}}', __name__, url_prefix='{{cookiecutter.plugin_url}}/api')
+blueprint = Blueprint(
+    '{{cookiecutter.plugin_name_camel}}',
+    __name__,
+    url_prefix='{{cookiecutter.plugin_url}}/api',
+)
 
 # pylint: disable=invalid-name
 {{cookiecutter.plugin_name_snake}} = {
@@ -15,6 +19,6 @@ blueprint = Blueprint('{{cookiecutter.plugin_name_camel}}', __name__, url_prefix
 }
 
 
-@blueprint.route('/example', methods=['GET'])
-def list_modules():
-    return jsonify(current_app.backend.perform('example_module', 'example_action'))
+@blueprint.route("/example", methods=["GET"])
+def get_example():
+    return jsonify(current_app.backend.perform("example_module", "example_action"))

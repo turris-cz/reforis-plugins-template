@@ -3,7 +3,7 @@
 #  This is free software, licensed under the GNU General Public License v3.
 #  See /LICENSE for more information.
 
-.PHONY: all prepare-dev install watch-js build-js lint lint-js lint-web test test-js test-web test-js-update-snapshots create-messages update-messages compile-messages clean
+.PHONY: all prepare-dev install install-js watch-js build-js lint lint-js lint-web test test-js test-web test-js-update-snapshots create-messages update-messages compile-messages clean
 
 DEV_PYTHON=python3.7
 ROUTER_PYTHON=python3.6
@@ -52,6 +52,8 @@ prepare-dev:
 install:
 	$(ROUTER_PYTHON) -m pip install -e .
 	ln -sf /tmp/reforis_{{cookiecutter.plugin_name_snake}}/reforis_static/{{cookiecutter.plugin_name_snake}} /tmp/reforis/reforis_static/
+install-js: js/package.json
+	cd $(JS_DIR); npm install --save-dev
 
 watch-js:
 	cd $(JS_DIR); npm run-script watch
@@ -61,6 +63,8 @@ build-js:
 lint: lint-js lint-web
 lint-js:
 	cd $(JS_DIR); npm run lint
+lint-js-fix:
+	cd $(JS_DIR); npm run lint:fix
 lint-web: venv
 	$(VENV_BIN)/$(DEV_PYTHON) -m pylint --rcfile=pylintrc reforis_{{cookiecutter.plugin_name_snake}}
 	$(VENV_BIN)/$(DEV_PYTHON) -m pycodestyle --config=pycodestyle reforis_{{cookiecutter.plugin_name_snake}}
@@ -74,13 +78,13 @@ test-js-update-snapshots:
 	cd $(JS_DIR); npm test -- -u
 
 create-messages:
-	$(VENV_BIN)/pybabel extract -F babel.cfg -o ./reforis/translations/messages.pot .
+	$(VENV_BIN)/pybabel extract -F babel.cfg -o ./reforis_{{cookiecutter.plugin_name_snake}}/translations/messages.pot .
 update-messages:
-	$(VENV_BIN)/pybabel update -i ./reforis/translations/messages.pot -d ./reforis/translations
-	$(VENV_BIN)/pybabel update -i ./reforis/translations/tzinfo.pot -d ./reforis/translations -D tzinfo
+	$(VENV_BIN)/pybabel update -i ./reforis_{{cookiecutter.plugin_name_snake}}/translations/messages.pot -d ./reforis_{{cookiecutter.plugin_name_snake}}/translations
+	$(VENV_BIN)/pybabel update -i ./reforis_{{cookiecutter.plugin_name_snake}}/translations/tzinfo.pot -d ./reforis_{{cookiecutter.plugin_name_snake}}/translations -D tzinfo
 compile-messages:
-	$(VENV_BIN)/pybabel compile -f -d ./reforis/translations
-	$(VENV_BIN)/pybabel compile -f -d ./reforis/translations -D tzinfo
+	$(VENV_BIN)/pybabel compile -f -d ./reforis_{{cookiecutter.plugin_name_snake}}/translations
+	$(VENV_BIN)/pybabel compile -f -d ./reforis_{{cookiecutter.plugin_name_snake}}/translations -D tzinfo
 
 clean:
 	find . -name '*.pyc' -exec rm -f {} +

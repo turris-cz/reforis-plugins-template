@@ -5,12 +5,13 @@
  * See /LICENSE for more information.
  */
 
-const API_URL_PREFIX = "/reforis{{cookiecutter.plugin_url}}/api";
+const API_URL_PREFIX = "{{cookiecutter.plugin_url}}/api";
 
 const API_URLs = new Proxy(
     {
         example: "/example",
-    }, {
+    },
+    {
         get: (target, name) => `${API_URL_PREFIX}${target[name]}`,
     },
 );
