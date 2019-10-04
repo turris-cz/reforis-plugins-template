@@ -19,14 +19,11 @@ setuptools.setup(
     # All versions are fixed just for case. Once in while try to check for new versions.
     install_requires=[
         'flask==1.0.2',
-        'Babel==2.7.0',
-        'Flask-Babel==0.12.2',
-        'wtforms==2.2.1',
-        'Flask-WTF==0.14.2',
         'Bootstrap-Flask==1.0.8',
     ],
     extras_require={
         'devel': [
+            'Babel',
             'pytest==3.7.1',
             'pylint==2.3.1',
             'pycodestyle==2.5.0',

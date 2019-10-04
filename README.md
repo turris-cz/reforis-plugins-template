@@ -26,14 +26,19 @@ When creating new repository please use `reforis_{{plugin_name}}` format for the
     $ make preapare-dev
     ```
 
-4. Build JS
+4. Initialize translation languages
+    ```bash
+    $ make init-lang
+    ```
+
+5. Build JS
     ```bash
     $ make build-js
     ```
 
-5. Sync plugin directory with router - copy repository to `/tmp/reforis_{{plugin_name}}/`
+6. Sync plugin directory with router - copy repository to `/tmp/reforis_{{plugin_name}}/`
 
-6. Install plugin **on the router**
+7. Install plugin **on the router**
     ```bash
     $ cd /tmp/reforis_{{plugin_name}}/
     $ make install

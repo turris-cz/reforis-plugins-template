@@ -3,7 +3,7 @@
 #  This is free software, licensed under the GNU General Public License v3.
 #  See /LICENSE for more information.
 
-.PHONY: all prepare-dev install install-js watch-js build-js lint lint-js lint-web test test-js test-web test-js-update-snapshots create-messages update-messages compile-messages clean
+.PHONY: all prepare-dev install install-js watch-js build-js lint lint-js lint-web test test-js test-web test-js-update-snapshots create-messages init-langs update-messages compile-messages clean
 
 DEV_PYTHON=python3.7
 ROUTER_PYTHON=python3.6
@@ -11,6 +11,8 @@ VENV_NAME?=venv
 VENV_BIN=$(shell pwd)/$(VENV_NAME)/bin
 
 JS_DIR=./js
+
+LANGS = cs da de el en fi fo fr hr hu it ja ko lt nb nb_NO nl pl ro ru sk sv
 
 all:
 	@echo "make prepare-dev"
@@ -77,14 +79,20 @@ test-web: venv
 test-js-update-snapshots:
 	cd $(JS_DIR); npm test -- -u
 
+
 create-messages:
 	$(VENV_BIN)/pybabel extract -F babel.cfg -o ./reforis_{{cookiecutter.plugin_name_snake}}/translations/messages.pot .
+init-langs: create-messages
+	for lang in $(LANGS); do \
+		pybabel init \
+		-i reforis_{{cookiecutter.plugin_name_snake}}/translations/messages.pot \
+		-d reforis_{{cookiecutter.plugin_name_snake}}/translations/ -l $$lang \
+	; done
+
 update-messages:
-	$(VENV_BIN)/pybabel update -i ./reforis_{{cookiecutter.plugin_name_snake}}/translations/messages.pot -d ./reforis_{{cookiecutter.plugin_name_snake}}/translations
-	$(VENV_BIN)/pybabel update -i ./reforis_{{cookiecutter.plugin_name_snake}}/translations/tzinfo.pot -d ./reforis_{{cookiecutter.plugin_name_snake}}/translations -D tzinfo
+	$(VENV_BIN)/pybabel update -i ./reforis_{{cookiecutter.plugin_name_snake}}/translations/messages.pot -d ./reforis/translations
 compile-messages:
 	$(VENV_BIN)/pybabel compile -f -d ./reforis_{{cookiecutter.plugin_name_snake}}/translations
-	$(VENV_BIN)/pybabel compile -f -d ./reforis_{{cookiecutter.plugin_name_snake}}/translations -D tzinfo
 
 clean:
 	find . -name '*.pyc' -exec rm -f {} +
