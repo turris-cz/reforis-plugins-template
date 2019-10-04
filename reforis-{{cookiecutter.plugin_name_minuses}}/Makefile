@@ -84,7 +84,7 @@ create-messages:
 	$(VENV_BIN)/pybabel extract -F babel.cfg -o ./reforis_{{cookiecutter.plugin_name_snake}}/translations/messages.pot .
 init-langs: create-messages
 	for lang in $(LANGS); do \
-		pybabel init \
+		$(VENV_BIN)/pybabel init \
 		-i reforis_{{cookiecutter.plugin_name_snake}}/translations/messages.pot \
 		-d reforis_{{cookiecutter.plugin_name_snake}}/translations/ -l $$lang \
 	; done
