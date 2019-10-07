@@ -16,7 +16,7 @@ NAME = 'reforis_{{cookiecutter.plugin_name_snake}}'
 BASE_DIR = pathlib.Path(__file__).absolute().parent
 
 
-class CustomBuild(build_py):
+class {{cookiecutter.plugin_name_camel}}Build(build_py):
     def run(self):
         # build package
         build_py.run(self)
@@ -72,7 +72,7 @@ setuptools.setup(
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application',
     ],
     cmdclass={
-        'build_py': CustomBuild,
+        'build_py': {{cookiecutter.plugin_name_camel}}Build,
     },
     zip_safe=False,
 )
