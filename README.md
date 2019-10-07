@@ -27,6 +27,7 @@ When creating new repository please use `reforis_{{plugin_name}}` format for the
     ```
 
 4. Initialize translation languages
+    Check variable `LANGS` in Makefie for list of languages before initiate translations.
     ```bash
     $ make init-lang
     ```
