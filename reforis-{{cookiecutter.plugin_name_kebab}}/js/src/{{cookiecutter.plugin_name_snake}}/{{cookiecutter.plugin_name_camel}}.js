@@ -11,6 +11,7 @@ export default function {{cookiecutter.plugin_name_camel}}() {
     return (
         <>
             <h1>{{cookiecutter.name|title}}</h1>
+            <p>{_("Add your components here")}</p>
         </>
     );
 }

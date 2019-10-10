@@ -2,7 +2,8 @@
     "name": "Example plugin",
     "plugin_name_camel": "{{ cookiecutter.name|title|replace(' ', '') }}",
     "plugin_name_snake": "{{ cookiecutter.name|lower|replace(' ', '_') }}",
-    "plugin_url": "/{{ cookiecutter.name|lower|replace(' ', '-') }}",
-    "version": "0.0.1",
+    "plugin_name_kebab": "{{ cookiecutter.name|lower|replace(' ', '-') }}",
+    "plugin_url": "/{{ cookiecutter.plugin_name_kebab }}",
+    "version": "0.1.0",
     "description": ""
 }

@@ -26,14 +26,20 @@ When creating new repository please use `reforis_{{plugin_name}}` format for the
     $ make preapare-dev
     ```
 
-4. Build JS
+4. Initialize translation languages
+    Check variable `LANGS` in Makefie for list of languages before initiate translations.
+    ```bash
+    $ make init-lang
+    ```
+
+5. Build JS
     ```bash
     $ make build-js
     ```
 
-5. Sync plugin directory with router - copy repository to `/tmp/reforis_{{plugin_name}}/`
+6. Sync plugin directory with router - copy repository to `/tmp/reforis_{{plugin_name}}/`
 
-6. Install plugin **on the router**
+7. Install plugin **on the router**
     ```bash
     $ cd /tmp/reforis_{{plugin_name}}/
     $ make install
@@ -41,3 +47,6 @@ When creating new repository please use `reforis_{{plugin_name}}` format for the
 
 ## Version control
 Please note that the git repository is not automatically created. If you wish to use one it's advised to add `repository` section to `package.json`.
+
+## Foris library
+[Foris JS](https://gitlab.labs.nic.cz/turris/reforis/foris-js) is one of the plugin's dependencies. For the sake of developers convenience its version is set to `latest` (in `package.json` file). After creating new plugin with the template it is recommended to fix version, i.e. change `latest` to the actual version (e.g. `0.2.3`) so that breaking changes in library won't affect the new plugin in an undesired way.

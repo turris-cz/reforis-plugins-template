@@ -4,9 +4,9 @@ stages:
   - test
 
 before_script:
-  - apt-get update && apt-get -y install sudo make curl && pip3 install cookiecutter
+  - apt-get update && apt-get -y install sudo make curl git && pip3 install cookiecutter
   - cookiecutter --no-input .
-  - cd reforis_example_plugin
+  - cd reforis-example-plugin
   - make prepare-dev
 
 test:
@@ -18,3 +18,8 @@ lint:
   stage: test
   script:
     - make lint
+
+translate:
+  stage: test
+  script:
+    - make init-langs
