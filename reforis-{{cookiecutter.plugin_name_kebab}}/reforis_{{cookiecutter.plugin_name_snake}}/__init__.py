@@ -15,7 +15,9 @@ blueprint = Blueprint(
 # pylint: disable=invalid-name
 {{cookiecutter.plugin_name_snake}} = {
     'blueprint': blueprint,
-    'js_app_path': '{{cookiecutter.plugin_name_snake}}/app.min.js'
+    # Define {python_module_name}/js/app.min.js
+    # See https://gitlab.labs.nic.cz/turris/reforis/reforis-distutils/blob/master/reforis_distutils/__init__.py#L11
+    'js_app_path': 'reforis_{{cookiecutter.plugin_name_snake}}/js/app.min.js'
 }
 
 
