@@ -3,6 +3,8 @@
 #  This is free software, licensed under the GNU General Public License v3.
 #  See /LICENSE for more information.
 
+from pathlib import Path
+
 from flask import Blueprint, current_app, jsonify
 
 # pylint: disable=invalid-name
@@ -12,12 +14,15 @@ blueprint = Blueprint(
     url_prefix='{{cookiecutter.plugin_url}}/api',
 )
 
+BASE_DIR = Path(__file__).parent
+
 # pylint: disable=invalid-name
 {{cookiecutter.plugin_name_snake}} = {
     'blueprint': blueprint,
     # Define {python_module_name}/js/app.min.js
     # See https://gitlab.labs.nic.cz/turris/reforis/reforis-distutils/blob/master/reforis_distutils/__init__.py#L11
-    'js_app_path': 'reforis_{{cookiecutter.plugin_name_snake}}/js/app.min.js'
+    'js_app_path': 'reforis_{{cookiecutter.plugin_name_snake}}/js/app.min.js',
+    'translations_path': BASE_DIR / 'translations',
 }
 
 
