@@ -53,7 +53,7 @@ prepare-dev:
 
 install:
 	$(ROUTER_PYTHON) -m pip install -e .
-	ln -sf /tmp/reforis_{{cookiecutter.plugin_name_snake}}/reforis_static/{{cookiecutter.plugin_name_snake}} /tmp/reforis/reforis_static/
+	ln -sf /tmp/reforis_{{cookiecutter.plugin_name_snake}}/reforis_static/reforis_{{cookiecutter.plugin_name_snake}} /tmp/reforis/reforis_static/
 install-js: js/package.json
 	cd $(JS_DIR); npm install --save-dev
 
