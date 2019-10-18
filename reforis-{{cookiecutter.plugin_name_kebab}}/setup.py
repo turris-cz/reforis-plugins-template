@@ -40,23 +40,24 @@ setuptools.setup(
     author='CZ.NIC, z.s.p.o.',
     author_email='bogdan.bodnar@nic.cz',
 
-    # All versions are fixed just for case. Once in while try to check for new versions.
     install_requires=[
         'flask',
         'Babel',
+        'Flask-Babel',
     ],
     extras_require={
         'devel': [
             'pytest==3.7.1',
             'pylint==2.3.1',
             'pycodestyle==2.5.0',
+            'reforis @ git+https://gitlab.labs.nic.cz/turris/reforis/reforis@dev#egg=reforis',
         ],
     },
     setup_requires=[
         'reforis_distutils',
     ],
     dependency_links=[
-        "git+https://gitlab.labs.nic.cz/turris/reforis/reforis-distutils.git#egg=reforis-distutils",
+        'git+https://gitlab.labs.nic.cz/turris/reforis/reforis-distutils.git#egg=reforis-distutils',
     ],
     entry_points={
         'foris.plugins': f'{NAME} = {NAME}:diagnostics'
