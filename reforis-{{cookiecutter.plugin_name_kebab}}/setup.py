@@ -61,7 +61,7 @@ setuptools.setup(
         'git+https://gitlab.labs.nic.cz/turris/reforis/reforis-distutils.git#egg=reforis-distutils',
     ],
     entry_points={
-        'foris.plugins': f'{NAME} = {NAME}:diagnostics'
+        'foris.plugins': f'{NAME} = {NAME}:{{cookiecutter.plugin_name_snake}}'
     },
     classifiers=[
         'Framework :: Flask',

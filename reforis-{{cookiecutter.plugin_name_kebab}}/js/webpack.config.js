@@ -11,7 +11,7 @@ module.exports = () => ({
     mode: "development",
     entry: "./src/app.js",
     output: {
-        // Build js app to ../reforis_static{python_module_name}/js/app.min.js
+        // Build js app to ../reforis_static{python_module_name}/app.min.js
         // See https://gitlab.labs.nic.cz/turris/reforis/reforis-distutils/blob/master/reforis_distutils/__init__.py#L11
         filename: "app.min.js",
         path: path.join(__dirname, "../reforis_static/reforis_{{cookiecutter.plugin_name_snake}}/"),

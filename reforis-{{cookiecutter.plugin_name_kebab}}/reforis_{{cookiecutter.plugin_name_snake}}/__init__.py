@@ -9,8 +9,7 @@ from http import HTTPStatus
 from flask import Blueprint, current_app, jsonify, request
 from flask_babel import gettext as _
 
-from reforis.foris_controller_api import APIError
-from reforis.foris_controller_api.utils import log_error, validate_json
+from reforis.foris_controller_api.utils import log_error, validate_json, APIError
 
 # pylint: disable=invalid-name
 blueprint = Blueprint(
@@ -26,7 +25,7 @@ BASE_DIR = Path(__file__).parent
     'blueprint': blueprint,
     # Define {python_module_name}/js/app.min.js
     # See https://gitlab.labs.nic.cz/turris/reforis/reforis-distutils/blob/master/reforis_distutils/__init__.py#L11
-    'js_app_path': 'reforis_{{cookiecutter.plugin_name_snake}}/js/app.min.js',
+    'js_app_path': 'reforis_{{cookiecutter.plugin_name_snake}}/app.min.js',
     'translations_path': BASE_DIR / 'translations',
 }
 
@@ -38,14 +37,10 @@ def get_example():
 
 @blueprint.route('/example', methods=['POST'])
 def post_example():
-    try:
-        validate_json(request.json, {'modules': list})
-    except APIError as error:
-        return jsonify(error.data), error.status_code
+    validate_json(request.json, {'modules': list})
 
     response = current_app.backend.perform('example_module', 'example_action', request.json)
     if response.get('result') is not True:
-        log_error(current_app, f'Invalid backend response: {response}', request)
-        return jsonify(_('Cannot create entity')), HTTPStatus.INTERNAL_SERVER_ERROR
+        raise APIError(_('Cannot create entity'), HTTPStatus.INTERNAL_SERVER_ERROR)
 
     return jsonify(response), HTTPStatus.CREATED

@@ -55,7 +55,8 @@ prepare-dev:
 
 install:
 	$(ROUTER_PYTHON) -m pip install -e .
-	ln -sf /tmp/reforis_{{cookiecutter.plugin_name_snake}}/reforis_static/reforis_{{cookiecutter.plugin_name_snake}} /tmp/reforis/reforis_static/
+	ln -sf /tmp/reforis-{{cookiecutter.plugin_name_kebab}}/reforis_static/reforis_{{cookiecutter.plugin_name_snake}} /tmp/reforis/reforis_static/
+	/etc/init.d/lighttpd restart
 install-js: js/package.json
 	cd $(JS_DIR); npm install --save-dev
 install-local-reforis:
