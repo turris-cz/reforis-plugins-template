@@ -6,7 +6,7 @@
  */
 
 import React from "react";
-import { render } from "customTestRender";
+import { render } from "foris/testUtils/customTestRender";
 
 import {{cookiecutter.plugin_name_camel}} from "../{{cookiecutter.plugin_name_camel}}";
 
