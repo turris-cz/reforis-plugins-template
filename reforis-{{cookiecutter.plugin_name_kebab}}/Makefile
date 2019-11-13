@@ -15,6 +15,8 @@ JS_DIR=./js
 LANGS = cs da de el en fi fo fr hr hu it ja ko lt nb nb_NO nl pl ro ru sk sv
 
 all:
+	@echo "make prepare-env"
+	@echo "    Install tools for development environment: node, npm, Python, virtualenv"
 	@echo "make prepare-dev"
 	@echo "    Create python virtual environment and install dependencies."
 	@echo "make install"
@@ -44,13 +46,13 @@ $(VENV_NAME)/bin/activate: setup.py
 	$(VENV_BIN)/$(DEV_PYTHON) -m pip install -e .[devel]
 	touch $(VENV_NAME)/bin/activate
 
-prepare-dev:
+prepare-env:
 	which npm || curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 	which npm || sudo apt install -y nodejs
-	cd $(JS_DIR); npm install
-
 	which $(DEV_PYTHON) || sudo apt install -y $(DEV_PYTHON) $(DEV_PYTHON)-pip
 	which virtualenv || sudo $(DEV_PYTHON) -m pip install virtualenv
+prepare-dev:
+	cd $(JS_DIR); npm install
 	make venv
 
 install:
