@@ -11,7 +11,7 @@ const {{cookiecutter.plugin_name_camel}}Plugin = {
     name: _("{{cookiecutter.name|title}}"),
     submenuId: "administration",
     weight: 100,
-    path: "{{cookiecutter.plugin_url}}",
+    path: "/{{cookiecutter.plugin_url_prefix}}",
     component: {{cookiecutter.plugin_name_camel}},
 };
 

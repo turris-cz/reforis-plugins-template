@@ -15,7 +15,7 @@ from reforis.foris_controller_api.utils import log_error, validate_json, APIErro
 blueprint = Blueprint(
     '{{cookiecutter.plugin_name_camel}}',
     __name__,
-    url_prefix='{{cookiecutter.plugin_url}}/api',
+    url_prefix='/{{cookiecutter.plugin_url_prefix}}/api',
 )
 
 BASE_DIR = Path(__file__).parent
