@@ -5,11 +5,13 @@
   "version": "{{cookiecutter.version}}",
   "description": "{{cookiecutter.description}}",
   "main": "./src/app.js",
+  "dependencies": {
+    "foris": "beta"
+  },
   "peerDependencies": {
-    "foris": "beta",
-    "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "prop-types": "15.7.2",
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -26,13 +28,13 @@
     "css-loader": "^3.0.0",
     "eslint": "^6.1.0",
     "eslint-config-reforis": "^1.0.0",
-    "foris": "beta",
+    "immutability-helper": "3.0.1",
     "jest": "^24.8.0",
     "jest-mock-axios": "^3.0.0",
     "moment-timezone": "^0.5.25",
-    "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "prop-types": "15.7.2",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
     "snapshot-diff": "^0.5.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.33.0",
