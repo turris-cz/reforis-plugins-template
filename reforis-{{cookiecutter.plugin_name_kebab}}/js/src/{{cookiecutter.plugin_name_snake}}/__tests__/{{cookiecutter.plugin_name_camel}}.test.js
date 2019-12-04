@@ -15,6 +15,6 @@ describe("<{{cookiecutter.plugin_name_camel}} />", () => {
     it("should render component", () => {
         const { getByText } = render(<{{cookiecutter.plugin_name_camel}} />);
         expect(getByText("{{cookiecutter.name|title}}")).toBeDefined();
-        expect(mockAxios.get).toBeCalledWith("reforis/{{cookiecutter.plugin_url_prefix}}/api/example", expect.anything());
+        expect(mockAxios.get).toBeCalledWith("/reforis/{{cookiecutter.plugin_url_prefix}}/api/example", expect.anything());
     });
 });
