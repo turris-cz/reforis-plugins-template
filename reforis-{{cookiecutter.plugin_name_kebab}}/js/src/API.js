@@ -5,7 +5,9 @@
  * See /LICENSE for more information.
  */
 
-const API_URL_PREFIX = "reforis/{{cookiecutter.plugin_url_prefix}}/api";
+import { REFORIS_URL_PREFIX } from "foris";
+
+const API_URL_PREFIX = `${REFORIS_URL_PREFIX}/{{cookiecutter.plugin_url_prefix}}/api`;
 
 const API_URLs = new Proxy(
     {
