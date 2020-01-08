@@ -22,3 +22,8 @@ init-langs:
   stage: test
   script:
     - make init-langs
+
+test-build:
+  stage: test
+  script:
+    - make build-js
