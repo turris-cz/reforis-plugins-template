@@ -95,7 +95,7 @@ init-langs: create-messages
 		-d reforis_{{cookiecutter.plugin_name_snake}}/translations/ -l $$lang \
 	; done
 update-messages:
-	$(VENV_BIN)/pybabel update -i ./reforis_{{cookiecutter.plugin_name_snake}}/translations/messages.pot -d ./reforis/translations
+	$(VENV_BIN)/pybabel update -i ./reforis_{{cookiecutter.plugin_name_snake}}/translations/messages.pot -d ./reforis_{{cookiecutter.plugin_name_snake}}/translations
 compile-messages:
 	$(VENV_BIN)/pybabel compile -f -d ./reforis_{{cookiecutter.plugin_name_snake}}/translations
 
