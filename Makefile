@@ -16,3 +16,6 @@ lint: prepare_template
 
 init-langs: prepare_template
 	make -C reforis-example-plugin init-langs
+
+update-messages: prepare_template
+	make -C reforis-example-plugin update-messages
