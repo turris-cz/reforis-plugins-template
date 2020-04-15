@@ -1,1 +1,1 @@
-recursive-include reforis_static/{{cookiecutter.plugin_name_snake}} *
+recursive-include reforis_static/reforis_{{cookiecutter.plugin_name_snake}} *
