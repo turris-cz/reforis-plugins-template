@@ -12,7 +12,7 @@ PYTHON=python3
 
 JS_DIR=./js
 
-LANGS = cs da de el en fi fo fr hr hu it ja ko lt nb nb_NO nl pl ro ru sk sv
+LANGS = cs da de el en fi fo fr hr hu it ja ko lt nb_NO nl pl ro ru sk sv
 
 all:
 	@echo "make prepare-env"
