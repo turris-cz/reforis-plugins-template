@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 CZ.NIC z.s.p.o. (http://www.nic.cz/)
+ * Copyright (C) 2020-2023 CZ.NIC z.s.p.o. (https://www.nic.cz/)
  *
  * This is free software, licensed under the GNU General Public License v3.
  * See /LICENSE for more information.
@@ -15,7 +15,7 @@ const API_URLs = new Proxy(
     },
     {
         get: (target, name) => `${API_URL_PREFIX}${target[name]}`,
-    },
+    }
 );
 
 export default API_URLs;
