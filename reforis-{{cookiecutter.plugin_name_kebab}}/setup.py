@@ -38,7 +38,7 @@ setuptools.setup(
 
     description='{{cookiecutter.description}}',
     author='CZ.NIC, z.s.p.o.',
-    author_email='bogdan.bodnar@nic.cz',
+    author_email='software@turris.com',
 
     install_requires=[
         'flask',
