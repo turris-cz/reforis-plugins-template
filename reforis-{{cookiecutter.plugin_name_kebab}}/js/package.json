@@ -5,6 +5,9 @@
     "version": "{{cookiecutter.version}}",
     "description": "{{cookiecutter.description}}",
     "main": "./src/app.js",
+    "eslintConfig": {
+        "extends": "eslint-config-reforis"
+    },
     "dependencies": {
         "foris": "beta"
     },
@@ -23,11 +26,12 @@
         "@testing-library/react": "^8.0.9",
         "babel-loader": "^8.0.6",
         "css-loader": "^3.4.1",
-        "eslint": "^6.8.0",
-        "eslint-config-reforis": "^1.0.0",
+        "eslint": "^8.34.0",
+        "eslint-config-reforis": "^2.0.2",
         "jest": "^24.9.0",
         "jest-mock-axios": "^3.2.0",
         "moment-timezone": "^0.5.27",
+        "prettier": "^2.8.4",
         "prop-types": "^15.8.1",
         "react": "16.9.0",
         "react-dom": "16.9.0",
