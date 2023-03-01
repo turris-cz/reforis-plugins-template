@@ -9,7 +9,7 @@ from http import HTTPStatus
 from flask import Blueprint, current_app, jsonify, request
 from flask_babel import gettext as _
 
-from reforis.foris_controller_api.utils import log_error, validate_json, APIError
+from reforis.foris_controller_api.utils import validate_json, APIError
 
 # pylint: disable=invalid-name
 blueprint = Blueprint(
