@@ -1,9 +1,9 @@
+# !/usr/bin/env python3
+
 #  Copyright (C) 2019-2023 CZ.NIC z.s.p.o. (https://www.nic.cz/)
 #
 #  This is free software, licensed under the GNU General Public License v3.
 #  See /LICENSE for more information.
-
-# !/usr/bin/env python3
 
 import copy
 import pathlib
@@ -67,7 +67,7 @@ setuptools.setup(
         'Framework :: Flask',
         'Intended Audience :: Developers',
         'Development Status :: 3 - Alpha',
-        'License :: Other/Proprietary License',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
