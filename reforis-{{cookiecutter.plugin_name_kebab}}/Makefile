@@ -1,7 +1,4 @@
-#  Copyright (C) 2020-2023 CZ.NIC z.s.p.o. (https://www.nic.cz/)
-#
-#  This is free software, licensed under the GNU General Public License v3.
-#  See /LICENSE for more information.
+{{ cookiecutter.license_py }}
 
 PROJECT="reForis {{cookiecutter.name}}" 
 # Retrieve version from setup.py 
@@ -46,7 +43,7 @@ all:
 
 .PHONY: prepare-dev
 prepare-dev:
-	which npm || curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+	which npm || curl -sL https://deb.nodesource.com/setup_21.x | sudo -E bash -
 	which npm || sudo apt-get install -y nodejs
 	cd $(JS_DIR); npm install
 
