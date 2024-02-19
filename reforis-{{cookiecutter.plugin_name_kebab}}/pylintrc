@@ -1,9 +1,8 @@
 [MASTER]
 ignore=tests,tests.py,fixtures.py
-load-plugins=pylint_quotes
 
 [MESSAGES CONTROL]
-disable=missing-docstring,redefined-outer-name,too-few-public-methods,cyclic-import,no-member
+disable=redefined-outer-name,too-few-public-methods,cyclic-import,no-member
 
 [REPORTS]
 output-format=colorized
