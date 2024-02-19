@@ -109,4 +109,6 @@ venv.bak/
 ## mypy
 .mypy_cache/
 
-reforis_static/reforis_{{cookiecutter.plugin_name_snake}}/js/app.min.js
+reforis_static/reforis_{{cookiecutter.plugin_name_snake}}/js/*.min.js
+reforis_static/reforis_{{cookiecutter.plugin_name_snake}}/js/*.LICENSE
+reforis_static/reforis_{{cookiecutter.plugin_name_snake}}/js/*.txt
