@@ -1,5 +1,7 @@
 {{ cookiecutter.license_py }}
 
+""" {{ cookiecutter.name }} plugin for reForis """
+
 from pathlib import Path
 from http import HTTPStatus
 
@@ -27,11 +29,13 @@ BASE_DIR = Path(__file__).parent
 
 @blueprint.route('/example', methods=['GET'])
 def get_example():
+    """ Example of how to use backend """
     return jsonify(current_app.backend.perform('example_module', 'example_action'))
 
 
 @blueprint.route('/example', methods=['POST'])
 def post_example():
+    """ Example of how to use backend with request data """
     validate_json(request.json, {'modules': list})
 
     response = current_app.backend.perform('example_module', 'example_action', request.json)
