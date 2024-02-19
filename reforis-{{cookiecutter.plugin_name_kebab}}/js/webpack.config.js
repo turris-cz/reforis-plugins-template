@@ -2,6 +2,8 @@
 
 const path = require("path");
 
+const webpack = require("webpack");
+
 module.exports = () => ({
     mode: "development",
     entry: "./src/app.js",
@@ -19,6 +21,9 @@ module.exports = () => ({
             path.resolve(__dirname, "./src"),
             path.resolve(__dirname, "./node_modules"),
         ],
+        alias: {
+            process: "process/browser",
+        },
     },
     module: {
         rules: [
@@ -33,6 +38,11 @@ module.exports = () => ({
             },
         ],
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            process: "process/browser",
+        }),
+    ],
     // Equal to peerDependencies in package.json
     externals: {
         "prop-types": "PropTypes",
