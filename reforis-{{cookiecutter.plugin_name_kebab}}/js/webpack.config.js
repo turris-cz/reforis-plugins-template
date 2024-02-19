@@ -1,11 +1,8 @@
-/*
- * Copyright (C) 2020 CZ.NIC z.s.p.o. (http://www.nic.cz/)
- *
- * This is free software, licensed under the GNU General Public License v3.
- * See /LICENSE for more information.
- */
+{{ cookiecutter.license_js }}
 
 const path = require("path");
+
+const webpack = require("webpack");
 
 module.exports = () => ({
     mode: "development",
@@ -14,13 +11,19 @@ module.exports = () => ({
         // Build js app to ../reforis_static{python_module_name}/app.min.js
         // See https://gitlab.labs.nic.cz/turris/reforis/reforis-distutils/blob/master/reforis_distutils/__init__.py#L11
         filename: "app.min.js",
-        path: path.join(__dirname, "../reforis_static/reforis_{{cookiecutter.plugin_name_snake}}/js/"),
+        path: path.join(
+            __dirname,
+            "../reforis_static/reforis_{{cookiecutter.plugin_name_snake}}/js/"
+        ),
     },
     resolve: {
         modules: [
             path.resolve(__dirname, "./src"),
             path.resolve(__dirname, "./node_modules"),
         ],
+        alias: {
+            process: "process/browser",
+        },
     },
     module: {
         rules: [
@@ -35,6 +38,11 @@ module.exports = () => ({
             },
         ],
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            process: "process/browser",
+        }),
+    ],
     // Equal to peerDependencies in package.json
     externals: {
         "prop-types": "PropTypes",

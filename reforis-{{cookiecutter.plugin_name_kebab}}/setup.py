@@ -1,9 +1,6 @@
-#  Copyright (C) 2020-2021 CZ.NIC z.s.p.o. (http://www.nic.cz/)
-#
-#  This is free software, licensed under the GNU General Public License v3.
-#  See /LICENSE for more information.
-
 # !/usr/bin/env python3
+
+{{ cookiecutter.license_py }}
 
 import copy
 import pathlib
@@ -37,21 +34,21 @@ setuptools.setup(
     include_package_data=True,
 
     description='{{cookiecutter.description}}',
-    author='CZ.NIC, z.s.p.o.',
-    author_email='bogdan.bodnar@nic.cz',
+    author='CZ.NIC, z.s.p.o. (https://www.nic.cz/)',
+    author_email='software@turris.com',
 
     install_requires=[
         'flask',
         'Babel',
         'Flask-Babel',
-        'reforis @ git+https://gitlab.nic.cz/turris/reforis/reforis#egg=reforis',
     ],
     extras_require={
         'devel': [
             'pytest',
             'pylint',
-            'pylint-quotes',
             'pycodestyle',
+            'reforis @ git+https://gitlab.nic.cz/turris/reforis/reforis#egg=reforis',
+            'werkzeug == 2.0.3',  # TODO remove pin when werkzeug is fixed see https://gitlab.nic.cz/turris/reforis/reforis/-/merge_requests/316#note_249166
         ],
     },
     setup_requires=[
@@ -65,11 +62,11 @@ setuptools.setup(
     },
     classifiers=[
         'Framework :: Flask',
-        'Intended Audience :: Developers',
-        'Development Status :: 3 - Alpha',
-        'License :: Other/Proprietary License',
+        'Intended Audience :: End Users/Desktop',
+        'Development Status :: 5 - Production/Stable',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: English',
-        'Operating System :: OS Independent',
+        'Operating System :: POSIX :: Linux',
         'Programming Language :: Python :: 3',
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application',
     ],

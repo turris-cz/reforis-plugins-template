@@ -1,35 +1,35 @@
-image: python:3.7-slim-stretch
+image: registry.nic.cz/turris/reforis/reforis/reforis-image
 
 stages:
-  - test
+    - test
 
 before_script:
-  - apt-get update && apt-get -y install sudo make curl git && pip3 install cookiecutter
-  - sh prepare_template.sh
-  - cd reforis-example-plugin
+    - apt-get update && apt-get -y install sudo make curl git && pip3 install cookiecutter
+    - sh prepare_template.sh
+    - cd reforis-example-plugin
 
 test:
-  stage: test
-  script:
-    - make test
+    stage: test
+    script:
+        - make test
 
 lint:
-  stage: test
-  script:
-    - make lint
+    stage: test
+    script:
+        - make lint
 
 init-langs:
-  stage: test
-  script:
-    - make init-langs
+    stage: test
+    script:
+        - make init-langs
 
 update-messages:
-  stage: test
-  script:
-    - make init-langs
-    - make update-messages
+    stage: test
+    script:
+        - make init-langs
+        - make update-messages
 
 test-build:
-  stage: test
-  script:
-    - make build-js
+    stage: test
+    script:
+        - make build-js

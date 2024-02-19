@@ -5,5 +5,8 @@
     "plugin_name_kebab": "{{ cookiecutter.name|lower|replace(' ', '-') }}",
     "plugin_url_prefix": "{{ cookiecutter.plugin_name_kebab }}",
     "version": "0.1.0",
-    "description": ""
+    "description": "",
+    "year": "{% now 'utc', '%Y' %}",
+    "license_py": "# Copyright (C) 2020-{{ cookiecutter.year }} CZ.NIC z.s.p.o. (https://www.nic.cz/)\n#\n# This is free software, licensed under the GNU General Public License v3.\n# See /LICENSE for more information.",
+    "license_js": "/*\n * Copyright (C) 2020-{{ cookiecutter.year }} CZ.NIC z.s.p.o. (https://www.nic.cz/)\n *\n * This is free software, licensed under the GNU General Public License v3.\n * See /LICENSE for more information.\n */"
 }
