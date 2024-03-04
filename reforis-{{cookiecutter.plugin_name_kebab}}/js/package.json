@@ -1,6 +1,10 @@
 {
     "name": "reforis_{{cookiecutter.plugin_name_snake}}",
     "author": "CZ.NIC, z.s.p.o.",
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.nic.cz/turris/reforis/reforis-{{cookiecutter.plugin_name_kebab}}-plugin.git"
+    },
     "license": "GPL-3.0",
     "version": "{{cookiecutter.version}}",
     "description": "{{cookiecutter.description}}",
