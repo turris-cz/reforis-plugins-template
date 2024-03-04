@@ -105,8 +105,7 @@ lint-js-fix:
 
 .PHONY: lint-web
 lint-web: venv
-	$(VENV_BIN)/$(PYTHON) -m pylint --rcfile=pylintrc reforis_{{cookiecutter.plugin_name_snake}}
-	$(VENV_BIN)/$(PYTHON) -m pycodestyle --config=pycodestyle reforis_{{cookiecutter.plugin_name_snake}}
+	$(VENV_BIN)/$(PYTHON) -m ruff check reforis_{{cookiecutter.plugin_name_snake}}
 
 
 # Testing
